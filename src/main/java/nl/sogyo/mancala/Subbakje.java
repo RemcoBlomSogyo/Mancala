@@ -1,9 +1,6 @@
 package nl.sogyo.mancala;
 
-public class Subbakje {
-	
-	private int inhoud;
-	private Subbakje buurman;
+public class Subbakje extends Bakje{
 	
 	public Subbakje() {
 		inhoud = 4;
@@ -14,17 +11,9 @@ public class Subbakje {
 		inhoud = 4;
 		if (counter > 1) {
 			buurman = new Subbakje(counter - 1);
-		} /*else {
+		} else {
 			buurman = new Kalaha();
-		}*/
-	}
-	
-	public int getInhoud() {
-		return inhoud;
-	}
-	
-	public Subbakje getBuurman() {
-		return buurman;
+		}
 	}
 	
 	public void startBeurt() {
@@ -32,20 +21,9 @@ public class Subbakje {
 		buurman.geefDoor(hand);
 	}
 	
-	public void voegSteenToe() {
-		inhoud++;
-	}
-	
 	private int haalLeeg() {
 		int hand = inhoud;
 		inhoud = 0;
 		return hand;
-	}
-	
-	public void geefDoor(int hand) {
-		voegSteenToe();
-		if (hand > 1) {
-			buurman.geefDoor(hand - 1);
-		}
 	}
 }

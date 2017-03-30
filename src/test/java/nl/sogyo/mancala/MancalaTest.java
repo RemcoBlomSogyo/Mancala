@@ -33,10 +33,10 @@ public class MancalaTest {
     	Assert.assertEquals(4, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
     
-    /*@Test
-    public void bakjeBijStartBeurtIsVijfBuurmanLaatsteBakjeIsKalahaInhoudIsNul() {
+    @Test
+    public void geefHandDoorTotHandLeegIsBuurmanVanBuurmanLaatsteBakjeIsKalahaInhoudIsNul() {
     	Subbakje bakje = new Subbakje();
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
-    }*/
+    }
 }
