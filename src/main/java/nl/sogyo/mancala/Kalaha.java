@@ -2,8 +2,10 @@ package nl.sogyo.mancala;
 
 public class Kalaha extends Bakje{
 	
-	public Kalaha() {
+	public Kalaha(int kalahaCounter) {
 		inhoud = 0;
-		buurman = new Subbakje(true, 2);
+		if (kalahaCounter > 0) {
+			buurman = new Subbakje(6, kalahaCounter);
+		}
 	}
 }

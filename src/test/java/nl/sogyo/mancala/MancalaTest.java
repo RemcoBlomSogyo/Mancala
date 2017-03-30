@@ -67,4 +67,18 @@ public class MancalaTest {
     	bakje.startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
+    
+    @Test
+    public void bakjeStartBeurtIsInhoudElfGeefHandDoorTotHandLeegIsInhoudBuurmanVanLaatsteBakjeIsVier() {
+    	Subbakje bakje = new Subbakje(11, true);
+    	bakje.startBeurt();
+    	Assert.assertEquals(4, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsInhoudTwaalfGeefHandDoorTotHandLeegIsBuurmanVanLaatsteBakjeIsKalahaIsInhoudNul() {
+    	Subbakje bakje = new Subbakje(12, true);
+    	bakje.startBeurt();
+    	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
 }
