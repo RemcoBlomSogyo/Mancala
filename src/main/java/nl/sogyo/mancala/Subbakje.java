@@ -7,13 +7,22 @@ public class Subbakje extends Bakje{
 		buurman = new Subbakje(5);
 	}
 	
-	public Subbakje(int counter) {
+	private Subbakje(int counter) {
 		inhoud = 4;
 		if (counter > 1) {
 			buurman = new Subbakje(counter - 1);
 		} else {
 			buurman = new Kalaha();
 		}
+	}
+	
+	public Subbakje(int inhoud, boolean zelfInhoudBepalen) {
+		this.inhoud = inhoud;
+		buurman = new Subbakje(5);
+	}
+	
+	public Subbakje(boolean eenBuurmanMaken) {
+		inhoud = 4;
 	}
 	
 	public void startBeurt() {
