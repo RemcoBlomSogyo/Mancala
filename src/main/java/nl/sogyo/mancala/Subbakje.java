@@ -21,8 +21,11 @@ public class Subbakje extends Bakje{
 		buurman = new Subbakje(5);
 	}
 	
-	public Subbakje(boolean eenBuurmanMaken) {
+	public Subbakje(boolean gelimiteerdBuurmannenMakenNaKalaha, int counter) {
 		inhoud = 4;
+		if (counter > 0) {
+			buurman = new Subbakje(true, counter - 1);
+		}
 	}
 	
 	public void startBeurt() {

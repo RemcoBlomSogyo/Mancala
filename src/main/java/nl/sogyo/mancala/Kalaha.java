@@ -4,6 +4,6 @@ public class Kalaha extends Bakje{
 	
 	public Kalaha() {
 		inhoud = 0;
-		buurman = new Subbakje(true);
+		buurman = new Subbakje(true, 2);
 	}
 }
