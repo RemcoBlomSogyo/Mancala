@@ -83,10 +83,10 @@ public class MancalaTest {
     }
     
     @Test
-    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudIsEen() {
+    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudIsNulWantSteentjeEindigtInLeegBakje() {
     	Subbakje bakje = new Subbakje(13, true);
     	bakje.startBeurt();
-    	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
     
     @Test
@@ -101,5 +101,28 @@ public class MancalaTest {
     	Subbakje bakje = new Subbakje(13, true);
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsInhoudEenBuurmanIsNulSteelSteentjesVanOverBuurmanKalahaIsVier() {
+    	Subbakje bakje = new Subbakje(1, true);
+    	Subbakje buurman = (Subbakje) bakje.getBuurman();
+    	buurman.haalLeeg();
+    	bakje.startBeurt();
+    	Assert.assertEquals(5, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsKalahaIsZevenWantSteentjeEindigtInLeegBakje() {
+    	Subbakje bakje = new Subbakje(13, true);
+    	bakje.startBeurt();
+    	Assert.assertEquals(7, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsDerdeBakjeInhoudIsVierLaatsteBakjeIsKalahaInhoudIsEen() {
+    	Subbakje bakje = new Subbakje();
+    	bakje.startBeurt(3);
+    	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
 }
