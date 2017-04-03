@@ -5,10 +5,17 @@ public class Subbakje extends Bakje{
 	public Subbakje() {
 		inhoud = 4;
 		buurman = new Subbakje(5, 2, this);
+		eigenaar = 1;
 	}
 	
 	public Subbakje(int subbakjeCounter, int kalahaCounter, Subbakje eersteBakje) {
 		inhoud = 4;
+		if (kalahaCounter == 2) {
+			eigenaar = 1;
+		} else {
+			eigenaar = 2;
+		}
+		
 		if (subbakjeCounter > 1) {
 			buurman = new Subbakje(subbakjeCounter - 1, kalahaCounter, eersteBakje);
 		} else {
@@ -19,20 +26,13 @@ public class Subbakje extends Bakje{
 	public Subbakje(int inhoud, boolean zelfInhoudBepalen) {
 		this.inhoud = inhoud;
 		buurman = new Subbakje(5, 2, this);
+		eigenaar = 1;
 	}
-	
-	/*public Subbakje(boolean gelimiteerdBuurmannenMakenNaKalaha, int counter) {
-		inhoud = 4;
-		if (counter > 0) {
-			buurman = new Subbakje(true, counter - 1);
-		} else {
-			buurman = new Kalaha();
-		}
-	}*/
 	
 	public void startBeurt() {
 		int hand = haalLeeg();
-		buurman.geefDoor(hand);
+		int eigenaarHand = getEigenaar();
+		buurman.geefDoor(hand, eigenaarHand);
 	}
 	
 	private int haalLeeg() {

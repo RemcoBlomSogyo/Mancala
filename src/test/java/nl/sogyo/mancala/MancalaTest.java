@@ -83,10 +83,10 @@ public class MancalaTest {
     }
     
     @Test
-    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudIsNul() {
+    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudIsEen() {
     	Subbakje bakje = new Subbakje(13, true);
     	bakje.startBeurt();
-    	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
     
     @Test
@@ -94,5 +94,12 @@ public class MancalaTest {
     	Subbakje bakje = new Subbakje(13, true);
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegTweedeKalahaIsNul() {
+    	Subbakje bakje = new Subbakje(13, true);
+    	bakje.startBeurt();
+    	Assert.assertEquals(0, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
 }
