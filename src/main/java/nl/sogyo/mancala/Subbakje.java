@@ -33,11 +33,13 @@ public class Subbakje extends Bakje{
 	
 	public void startBeurt(int bakje) {
 		if (bakje != 1) {
-			buurman.startBeurt(bakje - 1);
+			Subbakje subBuurman = (Subbakje) buurman;
+			subBuurman.startBeurt(bakje - 1);
+		} else {
+			int hand = haalLeeg();
+			Speler eigenaarHand = getEigenaar();
+			buurman.geefDoor(hand, eigenaarHand);
 		}
-		int hand = haalLeeg();
-		Speler eigenaarHand = getEigenaar();
-		buurman.geefDoor(hand, eigenaarHand);
 	}
 	
 	public int haalLeeg() {
