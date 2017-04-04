@@ -158,4 +158,22 @@ public class MancalaTest {
     	bakje.startBeurt(2);
     	Assert.assertFalse(bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getEigenaar().getBeurt());
     }
+    
+    @Test
+    public void bakjeStartBeurtIsZesdeBakjeSpelerIsNogEenKeerMaarAlleBakjesZijnLeegSpelIsVoorbij() {
+    	Subbakje bakje = new Subbakje();
+    	Subbakje bakje2 = (Subbakje) bakje.getBuurman();
+    	Subbakje bakje3 = (Subbakje) bakje2.getBuurman();
+    	Subbakje bakje4 = (Subbakje) bakje3.getBuurman();
+    	Subbakje bakje5 = (Subbakje) bakje4.getBuurman();
+    	Subbakje bakje6 = (Subbakje) bakje5.getBuurman();
+    	bakje.haalLeeg();
+    	bakje2.haalLeeg();
+    	bakje3.haalLeeg();
+    	bakje4.haalLeeg();
+    	bakje5.haalLeeg();
+    	bakje6.haalLeeg(3);
+    	bakje.startBeurt(6);
+    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+    }
 }

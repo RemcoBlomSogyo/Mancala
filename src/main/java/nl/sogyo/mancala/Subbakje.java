@@ -38,8 +38,8 @@ public class Subbakje extends Bakje{
 		start de beurt op dit bakje - haal bakje leeg en geef door
 	*/
 	public void startBeurt() {
-		int hand = haalLeeg();
-		Speler eigenaarHand = getEigenaar();
+		int hand = this.haalLeeg();
+		Speler eigenaarHand = this.getEigenaar();
 		buurman.geefDoor(hand, eigenaarHand);
 	}
 	
@@ -51,8 +51,8 @@ public class Subbakje extends Bakje{
 			Subbakje subBuurman = (Subbakje) buurman;
 			subBuurman.startBeurt(bakje - 1);
 		} else {
-			int hand = haalLeeg();
-			Speler eigenaarHand = getEigenaar();
+			int hand = this.haalLeeg();
+			Speler eigenaarHand = this.getEigenaar();
 			buurman.geefDoor(hand, eigenaarHand);
 		}
 	}
@@ -63,6 +63,15 @@ public class Subbakje extends Bakje{
 	public int haalLeeg() {
 		int hand = inhoud;
 		inhoud = 0;
+		return hand;
+	}
+	
+	/*
+	 * haal bakje een aantal steentjes uit bakje - alleen voor testen
+	 */
+	public int haalLeeg(int steentjes) {
+		int hand = steentjes;
+		inhoud -= steentjes;
 		return hand;
 	}
 	
@@ -100,27 +109,6 @@ public class Subbakje extends Bakje{
 				}
 			}
 		}
-	}
-	
-	/*
-		controleer of de bakjes van de speler leeg zijn
-	*/
-	public boolean checkBakjesLeeg(Speler speler) {
-		Bakje currentBakje = this;
-		while (currentBakje.getEigenaar() == speler) {
-			currentBakje = currentBakje.getBuurman();
-		}
-		while (currentBakje.getEigenaar() != speler) {
-			currentBakje = currentBakje.getBuurman();
-		}
-
-		for(int i = 0; i < 6; i++) {
-			currentBakje = currentBakje.getBuurman();
-			if (currentBakje.getInhoud() != 0) {
-				return false;
-			}
-		}
-		return true;
 	}
 	
 	/*

@@ -18,9 +18,11 @@ public class Kalaha extends Bakje{
 	// geef hand door, voeg alleen steentje toe als de eigenaar van de hand overeen komt met de eigenaar van de kalaha
 	public void geefDoor(int hand, Speler eigenaarHand) {
 		if (eigenaar == eigenaarHand) {
-			voegSteenToe();
+			this.voegSteenToe();
 			if (hand > 1) {
 				buurman.geefDoor(hand - 1, eigenaarHand);
+			} else if (this.checkBakjesLeeg(this.getEigenaar())) {
+				this.getEigenaar().wisselBeurt();
 			}
 		} else {
 			buurman.geefDoor(hand, eigenaarHand);

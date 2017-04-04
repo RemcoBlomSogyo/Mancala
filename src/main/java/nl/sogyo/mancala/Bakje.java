@@ -24,6 +24,26 @@ public abstract class Bakje {
 		inhoud++;
 	}
 	
+	/*
+		controleer of de bakjes van de speler leeg zijn
+	 */
+	public boolean checkBakjesLeeg(Speler speler) {
+		Bakje currentBakje = this;
+		while (currentBakje.getEigenaar() == speler) {
+			currentBakje = currentBakje.getBuurman();
+		}
+		while (currentBakje.getEigenaar() != speler) {
+			currentBakje = currentBakje.getBuurman();
+		}	
+		for (int i = 0; i < 6; i++) {
+			if (currentBakje.getInhoud() != 0) {
+				return false;
+			}
+			currentBakje = currentBakje.getBuurman();
+		}
+		return true;
+	}
+
 	public abstract void geefDoor(int hand, Speler eigenaarHand);
 
 	public abstract void geefKalaha(int hand);
