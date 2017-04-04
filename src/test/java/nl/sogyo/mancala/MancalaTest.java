@@ -126,12 +126,36 @@ public class MancalaTest {
     	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
     
-    /*@Test
-    public void bakjeStartBeurtIsTweedeBakjeInhoudIsVierWisselBeurtSpelerBakjeStartBeurtIsDerdeBakjeInhoudTweedeKalahaIsEen() {
+    @Test
+    public void bakjeStartBeurtIsTweedeBakjeInhoudIsVierBeurtGaatNaarAndereSpeler() {
     	Subbakje bakje = new Subbakje();
     	bakje.startBeurt(2);
-    	bakje.getEigenaar().wisselBeurt();
+    	Assert.assertTrue(bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getEigenaar().getBeurt());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsDerdeBakjeInhoudIsVierBeurtBlijftBijSpeler() {
+    	Subbakje bakje = new Subbakje();
     	bakje.startBeurt(3);
-    	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
-    }*/
+    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    }
+    
+    @Test
+    public void bakjeStartBeurtIsTweedeBakjeBakjesAndereSpelerZijnLeegVoorWisselbeurtEindigtSpel() {
+    	Subbakje bakje = new Subbakje();
+    	Subbakje bakje1Speler2 = (Subbakje) bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman();
+    	Subbakje bakje2Speler2 = (Subbakje) bakje1Speler2.getBuurman();
+    	Subbakje bakje3Speler2 = (Subbakje) bakje2Speler2.getBuurman();
+    	Subbakje bakje4Speler2 = (Subbakje) bakje3Speler2.getBuurman();
+    	Subbakje bakje5Speler2 = (Subbakje) bakje4Speler2.getBuurman();
+    	Subbakje bakje6Speler2 = (Subbakje) bakje5Speler2.getBuurman();
+    	bakje1Speler2.haalLeeg();
+    	bakje2Speler2.haalLeeg();
+    	bakje3Speler2.haalLeeg();
+    	bakje4Speler2.haalLeeg();
+    	bakje5Speler2.haalLeeg();
+    	bakje6Speler2.haalLeeg();
+    	bakje.startBeurt(2);
+    	Assert.assertFalse(bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getEigenaar().getBeurt());
+    }
 }

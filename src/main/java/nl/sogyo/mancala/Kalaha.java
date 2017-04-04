@@ -2,10 +2,12 @@ package nl.sogyo.mancala;
 
 public class Kalaha extends Bakje{
 	
+	// constructor voor kalaha
 	public Kalaha(int kalahaCounter, Subbakje eersteBakje, Speler eigenaar) {
 		inhoud = 0;
 		this.eigenaar = eigenaar;
 		
+		// buurman van eerste kalaha is een nieuw subbakje, buurman van tweeede kalaha is het eerste subbakje
 		if (kalahaCounter > 0) {
 			buurman = new Subbakje(6, kalahaCounter, eersteBakje, new Speler(false));
 		} else {
@@ -13,6 +15,7 @@ public class Kalaha extends Bakje{
 		}
 	}
 	
+	// geef hand door, voeg alleen steentje toe als de eigenaar van de hand overeen komt met de eigenaar van de kalaha
 	public void geefDoor(int hand, Speler eigenaarHand) {
 		if (eigenaar == eigenaarHand) {
 			voegSteenToe();
@@ -23,21 +26,11 @@ public class Kalaha extends Bakje{
 			buurman.geefDoor(hand, eigenaarHand);
 		}
 	}
-		
-	public void steelInhoudOverbuurman(int hand, Speler eigenaarHand, int stappen, boolean kalahaGevonden, boolean inhoudGestolen) {
-		if (!inhoudGestolen) {
-			this.inhoud++;
-			buurman.steelInhoudOverbuurman(0, eigenaarHand, stappen - 1, true, inhoudGestolen);
-		} else if (eigenaarHand == this.getEigenaar()) {
-			inhoud += hand;
-			//this.getEigenaar().wisselBeurt();
-			//this.getBuurman().getEigenaar().wisselBeurt();
-		} else {
-			buurman.steelInhoudOverbuurman(hand, eigenaarHand, stappen, kalahaGevonden, inhoudGestolen);
-		}
-	}
 	
+	// leeg de inhoud van de hand in de kalaha
 	public void geefKalaha(int hand) {
 		inhoud += hand;
+		this.getEigenaar().wisselBeurt();
+		this.getBuurman().getEigenaar().wisselBeurt();
 	}
 }

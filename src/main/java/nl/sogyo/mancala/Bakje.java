@@ -1,5 +1,6 @@
 package nl.sogyo.mancala;
 
+// super class voor subbakje en kalaha
 public abstract class Bakje {
 
 	protected int inhoud;
@@ -18,24 +19,12 @@ public abstract class Bakje {
 		return eigenaar;
 	}
 	
+	// voeg een steentje toe aan de inhoud van het bakje
 	public void voegSteenToe() {
 		inhoud++;
 	}
 	
-	public abstract void geefDoor(int hand, Speler eigenaarHand); /*{
-		if (!(this instanceof Kalaha) || eigenaar == eigenaarHand) {
-			voegSteenToe();
-			if (hand > 1) {
-				buurman.geefDoor(hand - 1, eigenaarHand);
-			} else if (eigenaarHand == this.getEigenaar() && this.inhoud == 1 && (this instanceof Subbakje)) {
-				steelInhoudOverbuurman();
-			}
-		} else {
-			buurman.geefDoor(hand, eigenaarHand);
-		}
+	public abstract void geefDoor(int hand, Speler eigenaarHand);
 
-	}*/
-	public abstract void steelInhoudOverbuurman(int hand, Speler eigenaarHand, int stappen, boolean kalahaGevonden, boolean inhoudGestolen);
-	
 	public abstract void geefKalaha(int hand);
 }
