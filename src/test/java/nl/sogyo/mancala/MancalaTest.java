@@ -125,4 +125,13 @@ public class MancalaTest {
     	bakje.startBeurt(3);
     	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
     }
+    
+    /*@Test
+    public void bakjeStartBeurtIsTweedeBakjeInhoudIsVierWisselBeurtSpelerBakjeStartBeurtIsDerdeBakjeInhoudTweedeKalahaIsEen() {
+    	Subbakje bakje = new Subbakje();
+    	bakje.startBeurt(2);
+    	bakje.getEigenaar().wisselBeurt();
+    	bakje.startBeurt(3);
+    	Assert.assertEquals(1, bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getInhoud());
+    }*/
 }

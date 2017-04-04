@@ -7,7 +7,7 @@ public class Kalaha extends Bakje{
 		this.eigenaar = eigenaar;
 		
 		if (kalahaCounter > 0) {
-			buurman = new Subbakje(6, kalahaCounter, eersteBakje, new Speler(2));
+			buurman = new Subbakje(6, kalahaCounter, eersteBakje, new Speler(false));
 		} else {
 			buurman = eersteBakje;
 		}
@@ -30,8 +30,14 @@ public class Kalaha extends Bakje{
 			buurman.steelInhoudOverbuurman(0, eigenaarHand, stappen - 1, true, inhoudGestolen);
 		} else if (eigenaarHand == this.getEigenaar()) {
 			inhoud += hand;
+			//this.getEigenaar().wisselBeurt();
+			//this.getBuurman().getEigenaar().wisselBeurt();
 		} else {
 			buurman.steelInhoudOverbuurman(hand, eigenaarHand, stappen, kalahaGevonden, inhoudGestolen);
 		}
+	}
+	
+	public void geefKalaha(int hand) {
+		inhoud += hand;
 	}
 }

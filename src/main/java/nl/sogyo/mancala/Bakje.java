@@ -36,4 +36,6 @@ public abstract class Bakje {
 
 	}*/
 	public abstract void steelInhoudOverbuurman(int hand, Speler eigenaarHand, int stappen, boolean kalahaGevonden, boolean inhoudGestolen);
+	
+	public abstract void geefKalaha(int hand);
 }

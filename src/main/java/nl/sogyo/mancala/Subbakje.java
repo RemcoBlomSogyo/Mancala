@@ -4,7 +4,7 @@ public class Subbakje extends Bakje{
 	
 	public Subbakje() {
 		inhoud = 4;
-		eigenaar = new Speler(1);
+		eigenaar = new Speler(true);
 		buurman = new Subbakje(5, 2, this, eigenaar);
 	}
 	
@@ -21,7 +21,7 @@ public class Subbakje extends Bakje{
 	
 	public Subbakje(int inhoud, boolean zelfInhoudBepalen) {
 		this.inhoud = inhoud;
-		eigenaar = new Speler(1);
+		eigenaar = new Speler(true);
 		buurman = new Subbakje(5, 2, this, eigenaar);
 	}
 	
@@ -53,8 +53,29 @@ public class Subbakje extends Bakje{
 		if (hand > 1) {
 			buurman.geefDoor(hand - 1, eigenaarHand);
 		} else if (eigenaarHand == this.getEigenaar() && this.inhoud == 1) {
-			steelInhoudOverbuurman(this.haalLeeg(), this.eigenaar, 0, false, false);
+			Subbakje overbuurman = (Subbakje) getOverbuurman(this.eigenaar);
+			inhoud += overbuurman.haalLeeg();
+			hand = this.haalLeeg();
+			this.geefKalaha(hand);
 		}
+	}
+	
+	public void geefKalaha(int hand) {
+		buurman.geefKalaha(hand);
+	}
+	
+	public Bakje getOverbuurman(Speler eigenaar) {
+		int stappen = 0;
+		Bakje currentBakje = this;
+		while (currentBakje.getBuurman().getEigenaar() == eigenaar) {
+			currentBakje = currentBakje.getBuurman();
+			stappen++;
+		}
+		while (stappen != 0) {
+			currentBakje = currentBakje.getBuurman();
+			stappen--;
+		}
+		return currentBakje;
 	}
 	
 	public void steelInhoudOverbuurman(int hand, Speler eigenaarHand, int stappen, boolean kalahaGevonden, boolean inhoudGestolen) {
