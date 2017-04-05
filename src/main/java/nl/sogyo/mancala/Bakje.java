@@ -15,6 +15,14 @@ public abstract class Bakje {
 		return buurman;
 	}
 	
+	public Bakje getBuurman(int n) {
+		if (n == 1) {
+			return buurman;
+		} else {
+			return buurman.getBuurman(n - 1);
+		}
+	}
+	
 	public Speler getEigenaar() {
 		return eigenaar;
 	}
