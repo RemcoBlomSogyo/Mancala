@@ -176,4 +176,12 @@ public class MancalaTest {
     	bakje.startBeurt(6);
     	Assert.assertFalse(bakje.getEigenaar().getBeurt());
     }
+    
+    @Test
+    public void bakjeStartbeurtIsEersteBakjeMaarBakjeIsLeegSpelerHoudtDeBeurt() {
+    	Subbakje bakje = new Subbakje();
+    	bakje.haalLeeg();
+    	bakje.startBeurt(1);
+    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    }
 }

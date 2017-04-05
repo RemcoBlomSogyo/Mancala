@@ -38,9 +38,11 @@ public class Subbakje extends Bakje{
 		start de beurt op dit bakje - haal bakje leeg en geef door
 	*/
 	public void startBeurt() {
-		int hand = this.haalLeeg();
-		Speler eigenaarHand = this.getEigenaar();
-		buurman.geefDoor(hand, eigenaarHand);
+		if (inhoud != 0) {
+			int hand = this.haalLeeg();
+			Speler eigenaarHand = this.getEigenaar();
+			buurman.geefDoor(hand, eigenaarHand);
+		}
 	}
 	
 	/*
@@ -50,7 +52,7 @@ public class Subbakje extends Bakje{
 		if (bakje != 1) {
 			Subbakje subBuurman = (Subbakje) buurman;
 			subBuurman.startBeurt(bakje - 1);
-		} else {
+		} else if (inhoud != 0) {
 			int hand = this.haalLeeg();
 			Speler eigenaarHand = this.getEigenaar();
 			buurman.geefDoor(hand, eigenaarHand);
