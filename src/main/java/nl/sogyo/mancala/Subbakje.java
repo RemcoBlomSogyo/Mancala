@@ -38,19 +38,9 @@ public class Subbakje extends Bakje{
 		start de beurt op dit bakje - haal bakje leeg en geef door
 	*/
 	public void startBeurt() {
-		
-		// sla de eerste subbakjes en kalaha over als het niet de beurt is van de eerste speler
-		if (!this.getEigenaar().getBeurt()) {
-			if (buurman instanceof Subbakje) {
-				Subbakje subBuurman = (Subbakje) buurman;
-				subBuurman.startBeurt();
-			} else {
-				Subbakje buurmanVanKalaha = (Subbakje) buurman.getBuurman();
-				buurmanVanKalaha.startBeurt();
-			}
 			
 		// als het juiste bakje is gevonden en het bakje is niet leeg, haal het bakje leeg en geef de steentjes door
-		} else if (inhoud != 0) {
+		if (inhoud != 0) {
 			int hand = this.haalLeeg();
 			Speler eigenaarHand = this.getEigenaar();
 			buurman.geefDoor(hand, eigenaarHand);
@@ -62,18 +52,8 @@ public class Subbakje extends Bakje{
 	*/
 	public void startBeurt(int bakje) {
 		
-		// sla de eerste subbakjes en kalaha over als het niet de beurt is van de eerste speler
-		if (!this.getEigenaar().getBeurt()) {
-			if (buurman instanceof Subbakje) {
-				Subbakje subBuurman = (Subbakje) buurman;
-				subBuurman.startBeurt(bakje);
-			} else {
-				Subbakje buurmanVanKalaha = (Subbakje) buurman.getBuurman();
-				buurmanVanKalaha.startBeurt(bakje);
-			}
-		
 		// als speler van het bakje aan de beurt is, ga dan naar het juiste bakje om de beurt te starten
-		} else if (bakje != 1) {
+		if (bakje != 1) {
 			Subbakje subBuurman = (Subbakje) buurman;
 			subBuurman.startBeurt(bakje - 1);
 			
