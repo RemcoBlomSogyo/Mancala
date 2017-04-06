@@ -1,6 +1,8 @@
 package nl.sogyo.mancala;
 
-// super class voor subbakje en kalaha
+/*
+	super class voor subbakje en kalaha
+*/
 public abstract class Bakje {
 
 	protected int inhoud;
@@ -15,6 +17,7 @@ public abstract class Bakje {
 		return buurman;
 	}
 	
+	// om een buurman verder dan de eerste buurman te krijgen
 	public Bakje getBuurman(int n) {
 		if (n == 1) {
 			return buurman;
@@ -31,10 +34,8 @@ public abstract class Bakje {
 	public void voegSteenToe() {
 		inhoud++;
 	}
-	
-	/*
-		controleer of de bakjes van de speler leeg zijn
-	 */
+
+	// controleer of de bakjes van de speler leeg zijn
 	public boolean checkBakjesLeeg(Speler speler) {
 		Bakje currentBakje = this;
 		while (currentBakje.getEigenaar() == speler) {
