@@ -42,155 +42,127 @@ public class MancalaTest {
     
     @Test
     public void bakjeStartBeurtIsInhoudZesGeefHandDoorTotHandLeegIsInhoudKalahaIsEen() {
-    	Subbakje bakje = new Subbakje(6, true);
+    	Subbakje bakje = new Subbakje(new int[]{6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(1, bakje.getBuurman(6).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudZesGeefHandDoorTotHandLeegIsInhoudBuurmanVanKalahaIsVier() {
-    	Subbakje bakje = new Subbakje(6, true);
+    	Subbakje bakje = new Subbakje(new int[]{6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman(7).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudZevenGeefHandDoorTotHandLeegIsInhoudBuurmanVanKalahaIsVijf() {
-    	Subbakje bakje = new Subbakje(7, true);
+    	Subbakje bakje = new Subbakje(new int[]{7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman(7).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudZevenGeefHandDoorTotHandLeegIsInhoudBuurmanVanBuurmanVanKalahaIsVier() {
-    	Subbakje bakje = new Subbakje(7, true);
+    	Subbakje bakje = new Subbakje(new int[]{7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman(8).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudElfGeefHandDoorTotHandLeegIsInhoudBuurmanVanLaatsteBakjeIsVier() {
-    	Subbakje bakje = new Subbakje(11, true);
+    	Subbakje bakje = new Subbakje(new int[]{11, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(4, bakje.getBuurman(12).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudTwaalfGeefHandDoorTotHandLeegIsBuurmanVanLaatsteBakjeIsKalahaIsInhoudNul() {
-    	Subbakje bakje = new Subbakje(12, true);
+    	Subbakje bakje = new Subbakje(new int[]{12, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(13).getInhoud());
     }
     
     @Test
-    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudIsNulWantSteentjeEindigtInLeegBakje() {
-    	Subbakje bakje = new Subbakje(13, true);
+    public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsInhoudVanKalahaIsNulWantKalahaIsVanTegenstander() {
+    	Subbakje bakje = new Subbakje(new int[]{13, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
-    	Assert.assertEquals(0, bakje.getBuurman(14).getInhoud());
+    	Assert.assertEquals(0, bakje.getBuurman(13).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsBuurmanVanKalahaIsEersteBakjeInhoudBakjeBuurmanVanEerstBakjeIsVijf() {
-    	Subbakje bakje = new Subbakje(13, true);
+    	Subbakje bakje = new Subbakje(new int[]{13, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman(15).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegTweedeKalahaIsNul() {
-    	Subbakje bakje = new Subbakje(13, true);
+    	Subbakje bakje = new Subbakje(new int[]{13, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(13).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudEenBuurmanIsNulSteelSteentjesVanOverBuurmanKalahaIsVijf() {
-    	Subbakje bakje = new Subbakje(1, true);
-    	Subbakje buurman = (Subbakje) bakje.getBuurman();
-    	buurman.haalLeeg();
+    	Subbakje bakje = new Subbakje(new int[]{1, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(5, bakje.getBuurman(6).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudEenBuurmanIsNulSteelSteentjesVanOverBuurmanOverbuurmanIsNul() {
-    	Subbakje bakje = new Subbakje(1, true);
-    	Subbakje buurman = (Subbakje) bakje.getBuurman();
-    	buurman.haalLeeg();
+    	Subbakje bakje = new Subbakje(new int[]{1, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(0, bakje.getBuurman(11).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsInhoudDertienGeefHandDoorTotHandLeegIsKalahaIsZevenWantSteentjeEindigtInLeegBakje() {
-    	Subbakje bakje = new Subbakje(13, true);
+    	Subbakje bakje = new Subbakje(new int[]{13, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
     	bakje.startBeurt();
     	Assert.assertEquals(7, bakje.getBuurman(6).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsDerdeBakjeInhoudIsVierLaatsteBakjeIsKalahaInhoudIsEen() {
-    	Subbakje bakje = new Subbakje();
-    	bakje.startBeurt(3);
-    	Assert.assertEquals(1, bakje.getBuurman(6).getInhoud());
+    	Subbakje derdeBakje = (Subbakje) new Subbakje().getBuurman(2);
+    	derdeBakje.startBeurt();
+    	Assert.assertEquals(1, derdeBakje.getBuurman(4).getInhoud());
     }
     
     @Test
     public void bakjeStartBeurtIsTweedeBakjeInhoudIsVierBeurtGaatNaarAndereSpeler() {
-    	Subbakje bakje = new Subbakje();
-    	bakje.startBeurt(2);
-    	Assert.assertTrue(bakje.getBuurman(7).getEigenaar().getBeurt());
+    	Subbakje tweedeBakje = (Subbakje) new Subbakje().getBuurman();
+    	tweedeBakje.startBeurt();
+    	Assert.assertTrue(tweedeBakje.getBuurman(6).getEigenaar().getBeurt());
     }
     
     @Test
     public void bakjeStartBeurtIsDerdeBakjeInhoudIsVierBeurtBlijftBijSpeler() {
-    	Subbakje bakje = new Subbakje();
-    	bakje.startBeurt(3);
-    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+    	Subbakje derdeBakje = (Subbakje) new Subbakje().getBuurman(2);
+    	derdeBakje.startBeurt();
+    	Assert.assertTrue(derdeBakje.getEigenaar().getBeurt());
     }
     
     @Test
     public void bakjeStartBeurtIsTweedeBakjeBakjesAndereSpelerZijnLeegVoorWisselbeurtEindigtSpel() {
-    	Subbakje bakje = new Subbakje();
-    	Subbakje bakje1Speler2 = (Subbakje) bakje.getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman().getBuurman();
-    	Subbakje bakje2Speler2 = (Subbakje) bakje1Speler2.getBuurman();
-    	Subbakje bakje3Speler2 = (Subbakje) bakje2Speler2.getBuurman();
-    	Subbakje bakje4Speler2 = (Subbakje) bakje3Speler2.getBuurman();
-    	Subbakje bakje5Speler2 = (Subbakje) bakje4Speler2.getBuurman();
-    	Subbakje bakje6Speler2 = (Subbakje) bakje5Speler2.getBuurman();
-    	bakje1Speler2.haalLeeg();
-    	bakje2Speler2.haalLeeg();
-    	bakje3Speler2.haalLeeg();
-    	bakje4Speler2.haalLeeg();
-    	bakje5Speler2.haalLeeg();
-    	bakje6Speler2.haalLeeg();
-    	bakje.startBeurt(2);
-    	Assert.assertFalse(bakje.getBuurman(7).getEigenaar().getBeurt());
+    	Subbakje tweedeBakje = (Subbakje) new Subbakje(new int[]{4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0}).getBuurman();
+    	tweedeBakje.startBeurt();
+    	Assert.assertFalse(tweedeBakje.getBuurman(6).getEigenaar().getBeurt());
     }
     
     @Test
     public void bakjeStartBeurtIsZesdeBakjeSpelerIsNogEenKeerMaarAlleBakjesZijnLeegSpelIsVoorbij() {
-    	Subbakje bakje = new Subbakje();
-    	Subbakje bakje2 = (Subbakje) bakje.getBuurman();
-    	Subbakje bakje3 = (Subbakje) bakje2.getBuurman();
-    	Subbakje bakje4 = (Subbakje) bakje3.getBuurman();
-    	Subbakje bakje5 = (Subbakje) bakje4.getBuurman();
-    	Subbakje bakje6 = (Subbakje) bakje5.getBuurman();
-    	bakje.haalLeeg();
-    	bakje2.haalLeeg();
-    	bakje3.haalLeeg();
-    	bakje4.haalLeeg();
-    	bakje5.haalLeeg();
-    	bakje6.haalLeeg(3);
-    	bakje.startBeurt(6);
-    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+    	Subbakje zesdeBakje = (Subbakje) new Subbakje(new int[]{0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4}).getBuurman(5);
+    	zesdeBakje.startBeurt();
+    	Assert.assertFalse(zesdeBakje.getEigenaar().getBeurt());
     }
     
     @Test
     public void bakjeStartbeurtIsEersteBakjeMaarBakjeIsLeegSpelerHoudtDeBeurt() {
-    	Subbakje bakje = new Subbakje();
-    	bakje.haalLeeg();
-    	bakje.startBeurt(1);
+    	Subbakje bakje = new Subbakje(new int[]{0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+    	bakje.startBeurt();
     	Assert.assertTrue(bakje.getEigenaar().getBeurt());
     }
 }

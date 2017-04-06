@@ -26,12 +26,25 @@ public class Subbakje extends Bakje{
 	}
 	
 	/*
-		constructor eerste subbakje waarbij inhoud variabel is
-	*/
-	public Subbakje(int inhoud, boolean zelfInhoudBepalen) {
-		this.inhoud = inhoud;
+		constructor eerste subbakje - bij zelfingestelde inhoud bakjes
+	 */
+	public Subbakje(int[] inhoudBakjes) {
+		inhoud = inhoudBakjes[0];
 		eigenaar = new Speler(true);
-		buurman = new Subbakje(5, 2, this, eigenaar);
+		buurman = new Subbakje(5, 2, this, eigenaar, inhoudBakjes, 1);
+	}
+	
+	/*
+		constructor voor de rest van subbakjes - bij zelfingestelde inhoud bakjes
+	 */
+	public Subbakje(int subbakjeCounter, int kalahaCounter, Subbakje eersteBakje, Speler eigenaar, int[] inhoudBakjes, int indexBakje) {
+		inhoud = inhoudBakjes[indexBakje];
+		this.eigenaar = eigenaar; 
+		if (subbakjeCounter > 1) {
+			buurman = new Subbakje(subbakjeCounter - 1, kalahaCounter, eersteBakje, eigenaar, inhoudBakjes, indexBakje + 1);
+		} else {
+			buurman = new Kalaha(kalahaCounter - 1, eersteBakje, eigenaar, inhoudBakjes, indexBakje);
+		}
 	}
 	
 	/*
@@ -41,27 +54,7 @@ public class Subbakje extends Bakje{
 			
 		// als het juiste bakje is gevonden en het bakje is niet leeg, haal het bakje leeg en geef de steentjes door
 		if (inhoud != 0) {
-			int hand = this.haalLeeg();
-			Speler eigenaarHand = this.getEigenaar();
-			buurman.geefDoor(hand, eigenaarHand);
-		}
-	}
-	
-	/*
-		start de beurt op een bakje - nummer argument is nummer bakje
-	*/
-	public void startBeurt(int bakje) {
-		
-		// als speler van het bakje aan de beurt is, ga dan naar het juiste bakje om de beurt te starten
-		if (bakje != 1) {
-			Subbakje subBuurman = (Subbakje) buurman;
-			subBuurman.startBeurt(bakje - 1);
-			
-		// als het juiste bakje is gevonden en het bakje is niet leeg, haal het bakje leeg en geef de steentjes door
-		} else if (inhoud != 0) {
-			int hand = this.haalLeeg();
-			Speler eigenaarHand = this.getEigenaar();
-			buurman.geefDoor(hand, eigenaarHand);
+			buurman.geefDoor(haalLeeg(), eigenaar);
 		}
 	}
 	
@@ -94,27 +87,24 @@ public class Subbakje extends Bakje{
 			buurman.geefDoor(hand - 1, eigenaarHand);
 		
 		// als de hand geen steentjes meer heeft om door te geven en het bakje was leeg en van de eigen speler, steel dan de steentjes van de overbuurman
-		} else if (eigenaarHand == this.getEigenaar() && this.inhoud == 1) {
+		} else if (eigenaarHand == getEigenaar() && inhoud == 1) {
 			Subbakje overbuurman = (Subbakje) getOverbuurman();
 			hand = overbuurman.haalLeeg();
-			hand += this.haalLeeg();
-			this.geefKalaha(hand);
+			hand += haalLeeg();
+			geefKalaha(hand);
 			
 		// de beurt is voorbij en moet gewisseld worden. De speler die aan de beurt was wordt sowieso op false gezet.
 		} else {
 			eigenaarHand.wisselBeurt();
 			
 			// of de andere speler op true gaat, hangt af of zijn bakjes nog gevuld zijn
-			// controleer of einde bakje eigen bakje is
-			if (this.getEigenaar() == eigenaarHand) {
-				if (!checkBakjesLeeg(this.getOverbuurman().getEigenaar())) {
-					this.getOverbuurman().getEigenaar().wisselBeurt();
-				}
+			// controleer of laatste bakje eigen bakje is
+			if (getEigenaar() == eigenaarHand && !checkBakjesLeeg(getOverbuurman().getEigenaar())) {
+				getOverbuurman().getEigenaar().wisselBeurt();
+				
 			// anders is einde bakje het bakje van tegenstander
-			} else {
-				if (!checkBakjesLeeg(this.getEigenaar())) {
-					this.getEigenaar().wisselBeurt();
-				}
+			} else if (!checkBakjesLeeg(getEigenaar())) {
+				getEigenaar().wisselBeurt();
 			}
 		}
 	}
@@ -132,7 +122,6 @@ public class Subbakje extends Bakje{
 	public Bakje getOverbuurman() {
 		int stappen = 0;
 		Bakje currentBakje = this;
-		Speler eigenaar = this.getEigenaar();
 		
 		// loop eerst alle eigen bakjes af en tel elke stap op
 		while (currentBakje.getBuurman().getEigenaar() == eigenaar) {

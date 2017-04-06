@@ -15,9 +15,9 @@ public class Speler {
 	// verwijder of voeg de beurt toe van de speler
 	public void wisselBeurt() {
 		if (beurt) {
-			this.beurt = false;
+			beurt = false;
 		} else {
-			this.beurt = true;
+			beurt = true;
 		}
 	}
 }
