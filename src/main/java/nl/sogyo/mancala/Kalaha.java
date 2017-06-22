@@ -54,6 +54,9 @@ public class Kalaha extends Bakje{
 	public void geefKalaha(int hand) {
 		inhoud += hand;
 		getEigenaar().wisselBeurt();
-		buurman.getEigenaar().wisselBeurt();
+		
+		if (!buurman.checkBakjesLeeg(buurman.getEigenaar())) {
+			buurman.getEigenaar().wisselBeurt();
+		}
 	}
 }

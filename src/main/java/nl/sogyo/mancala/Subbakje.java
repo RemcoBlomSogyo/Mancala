@@ -53,7 +53,7 @@ public class Subbakje extends Bakje{
 	public void startBeurt() {
 			
 		// als het juiste bakje is gevonden en het bakje is niet leeg, haal het bakje leeg en geef de steentjes door
-		if (inhoud != 0) {
+		if (inhoud != 0 && eigenaar.getBeurt()) {
 			buurman.geefDoor(haalLeeg(), eigenaar);
 		}
 	}
@@ -99,8 +99,10 @@ public class Subbakje extends Bakje{
 			
 			// of de andere speler op true gaat, hangt af of zijn bakjes nog gevuld zijn
 			// controleer of laatste bakje eigen bakje is
-			if (getEigenaar() == eigenaarHand && !checkBakjesLeeg(getOverbuurman().getEigenaar())) {
-				getOverbuurman().getEigenaar().wisselBeurt();
+			if (getEigenaar() == eigenaarHand) {
+				if (!checkBakjesLeeg(getOverbuurman().getEigenaar())) {
+					getOverbuurman().getEigenaar().wisselBeurt();
+				}
 				
 			// anders is einde bakje het bakje van tegenstander
 			} else if (!checkBakjesLeeg(getEigenaar())) {
