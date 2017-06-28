@@ -33,7 +33,7 @@ public class Kalaha extends Bakje{
 	}
 	
 	/*
-		geef hand door, voeg alleen steentje toe als de eigenaar van de hand overeen komt met de eigenaar van de kalaha 
+		geef hand door, voeg alleen steentje toe als de eigenaar van de hand overeen komt met de eigenaar van de kalaha
 	*/
 	public void geefDoor(int hand, Speler eigenaarHand) {
 		if (eigenaar == eigenaarHand) {
