@@ -140,4 +140,4 @@ public class Subbakje extends Bakje{
 		// als stappen weer op 0 staat, return het bakje
 		return currentBakje;
 	}
-}
+} 
