@@ -140,29 +140,4 @@ public class Subbakje extends Bakje{
 		// als stappen weer op 0 staat, return het bakje
 		return currentBakje;
 	}
-	
-	public void test1() {
-		String test = "test";
-		String test2 = "test2";
-	}
-	
-	public void test2() {
-		String test = "test";
-		String test2 = "test2";
-	}
-	
-	public void test3() {
-		String test = "test";
-		String test2 = "test2";
-	}
-	
-	public void test4() {
-		String test = "test";
-		String test2 = "test2";
-	}
-	
-	public void test5() {
-		String test = "test";
-		String test2 = "test2";
-	}
 }
