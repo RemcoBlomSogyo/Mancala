@@ -152,45 +152,45 @@ public class MancalaTest {
     	Assert.assertFalse(tweedeBakje.getBuurman(6).getEigenaar().getBeurt());
     }
     
-    @Test
-    public void bakjeStartBeurtIsZesdeBakjeSpelerIsNogEenKeerMaarAlleBakjesZijnLeegSpelIsVoorbij() {
-    	Subbakje zesdeBakje = (Subbakje) new Subbakje(new int[]{0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4}).getBuurman(5);
-    	zesdeBakje.startBeurt();
-    	Assert.assertFalse(zesdeBakje.getEigenaar().getBeurt());
-    }
-    
-    @Test
-    public void bakjeStartbeurtIsEersteBakjeMaarBakjeIsLeegSpelerHoudtDeBeurt() {
-    	Subbakje bakje = new Subbakje(new int[]{0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
-    	bakje.startBeurt();
-    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
-    }
-    
-    @Test
-    public void bakjeStartbeurtIsEersteBakjeSpelerTweeMaarSpelerHeeftNietDeBeurtInhoudBlijftVier() {
-    	Subbakje eersteBakjeSpelerTwee = (Subbakje) new Subbakje().getBuurman(7);
-    	eersteBakjeSpelerTwee.startBeurt();
-    	Assert.assertEquals(4, eersteBakjeSpelerTwee.getInhoud());
-    }
-    
-    @Test
-    public void bakjeStartbeurtIsEersteBakjeSpelerEenHeeftNietMeerDeBeurt() {
-    	Subbakje bakje = new Subbakje();
-    	bakje.startBeurt();
-    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
-    }
-    
-    @Test
-    public void bakjeStartBeurtIsEersteBakjeBakjesAndereSpelerZijnLeegSpelerEenHeeftNietMeerDeBeurt() {
-    	Subbakje bakje = (Subbakje) new Subbakje(new int[]{4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0});
-    	bakje.startBeurt();
-    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
-    }
-    
-    @Test
-    public void bakjeStartBeurtIsEersteBakjeSteeltSteentjesVanSpelerTweeWaardoorSpelerTweeGeenSteentjesMeerHeeftSpelerTweeKrijgtNietDeBeurt() {
-    	Subbakje bakje = (Subbakje) new Subbakje(new int[]{4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0});
-    	bakje.startBeurt();
-    	Assert.assertFalse(bakje.getOverbuurman().getEigenaar().getBeurt());
-    }
+//    @Test
+//    public void bakjeStartBeurtIsZesdeBakjeSpelerIsNogEenKeerMaarAlleBakjesZijnLeegSpelIsVoorbij() {
+//    	Subbakje zesdeBakje = (Subbakje) new Subbakje(new int[]{0, 0, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4}).getBuurman(5);
+//    	zesdeBakje.startBeurt();
+//    	Assert.assertFalse(zesdeBakje.getEigenaar().getBeurt());
+//    }
+//    
+//    @Test
+//    public void bakjeStartbeurtIsEersteBakjeMaarBakjeIsLeegSpelerHoudtDeBeurt() {
+//    	Subbakje bakje = new Subbakje(new int[]{0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+//    	bakje.startBeurt();
+//    	Assert.assertTrue(bakje.getEigenaar().getBeurt());
+//    }
+//    
+//    @Test
+//    public void bakjeStartbeurtIsEersteBakjeSpelerTweeMaarSpelerHeeftNietDeBeurtInhoudBlijftVier() {
+//    	Subbakje eersteBakjeSpelerTwee = (Subbakje) new Subbakje().getBuurman(7);
+//    	eersteBakjeSpelerTwee.startBeurt();
+//    	Assert.assertEquals(4, eersteBakjeSpelerTwee.getInhoud());
+//    }
+//    
+//    @Test
+//    public void bakjeStartbeurtIsEersteBakjeSpelerEenHeeftNietMeerDeBeurt() {
+//    	Subbakje bakje = new Subbakje();
+//    	bakje.startBeurt();
+//    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+//    }
+//    
+//    @Test
+//    public void bakjeStartBeurtIsEersteBakjeBakjesAndereSpelerZijnLeegSpelerEenHeeftNietMeerDeBeurt() {
+//    	Subbakje bakje = (Subbakje) new Subbakje(new int[]{4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0});
+//    	bakje.startBeurt();
+//    	Assert.assertFalse(bakje.getEigenaar().getBeurt());
+//    }
+//    
+//    @Test
+//    public void bakjeStartBeurtIsEersteBakjeSteeltSteentjesVanSpelerTweeWaardoorSpelerTweeGeenSteentjesMeerHeeftSpelerTweeKrijgtNietDeBeurt() {
+//    	Subbakje bakje = (Subbakje) new Subbakje(new int[]{4, 4, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0});
+//    	bakje.startBeurt();
+//    	Assert.assertFalse(bakje.getOverbuurman().getEigenaar().getBeurt());
+//    }
 }
