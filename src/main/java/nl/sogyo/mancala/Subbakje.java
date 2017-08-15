@@ -23,7 +23,7 @@ public class Subbakje extends Bakje{
 		} else {
 			buurman = new Kalaha(kalahaCounter - 1, eersteBakje, eigenaar);
 		}
-	}
+	} 
 	
 	/*
 		constructor eerste subbakje - bij zelfingestelde inhoud bakjes
