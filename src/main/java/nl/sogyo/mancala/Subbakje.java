@@ -12,7 +12,7 @@ public class Subbakje extends Bakje{
 	}
 	
 	/*
-		constructor voor de rest van subbakjes
+		constructor voor de rest van subbakjes 
 	*/
 	public Subbakje(int subbakjeCounter, int kalahaCounter, Subbakje eersteBakje, Speler eigenaar) {
 		inhoud = 4;
